@@ -7,7 +7,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-      
+      <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
       <title>다음 API를 활용한 책 검색</title>
       
       <link rel="shortcut icon" href="/resources/image/icon.png" />
@@ -33,15 +33,33 @@
 		  }
 		}
       </style>
+      
+      <script>
+      $(function(){
+    	  
+    	  
+    	  	$('.bookTitle').click(function(event) {
+    	      event.preventDefault(); // 기본 이벤트를 방지합니다 (링크 클릭시 페이지 이동 방지)
+    	      var contents = $(this).data('contents'); // 클릭된 요소의 data-title 속성 값 가져오기
+    	      
+    	      alert(contents);
+    	      
+    	    });
+    	  
+    	  
+      })
+      
+      </script>
+    
    </head>
    <body>
    
-   다음 책 검색
+   	<h3>다음 책 검색 API</h3>
    
 	<form id="submitForm" method="GET" action="/test/search"> 
 		<div class="input-group mb-3">
-		  <input type="text" id="keywordInput" name="keyword" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-		  <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
+		  <input type="text" id="keywordInput" name="keyword" class="form-control" placeholder="키워드를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+		  <button class="btn btn-outline-secondary" type="submit" id="button-addon2">도서검색</button>
 		</div>
 	</form>
 	<table class="table">
@@ -50,7 +68,6 @@
             <th scope="col">#</th>
             <th scope="col">제목</th>
             <th scope="col">저자</th>
-            <th scope="col">출판일</th>
             <th scope="col">이미지</th>
           </tr>
         </thead>
@@ -58,18 +75,25 @@
           <c:forEach items="${result.documents}" var="document" varStatus="status">
             <tr>
               <th scope="row">${status.index + 1}</th>
-              <td><a href="${document.url}">${document.title}</a></td>
+              <td>
+				  <a href="#" class="bookTitle" data-contents="${document.contents}">${document.title}</a>
+			  </td>
               <td><c:forEach items="${document.authors}" var="author">${author} </c:forEach></td>
              
               <td><img src="${document.thumbnail}" alt="${document.title}" class="img-thumbnail" /></td>
             </tr>
+           <!-- 제목 버튼을 누르면 여기 tr을 하나 더 만들어서 컨텐츠를 표시 -->
           </c:forEach>
+          
         </tbody>
       </table>
-   
+      
+      
+     
    
    
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
    </body>
+    
 </html>
