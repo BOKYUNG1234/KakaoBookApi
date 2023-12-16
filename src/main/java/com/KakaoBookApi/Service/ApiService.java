@@ -1,6 +1,7 @@
 package com.KakaoBookApi.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,7 +19,9 @@ import lombok.extern.slf4j.Slf4j;
 public class ApiService {
 
     private final RestTemplate restTemplate;
-    private final String API_KEY = "f6fe47d57923b395597b0530446462ac";
+    
+    @Value("${API_KEY}")
+    private String API_KEY;
 
     @Autowired
     public ApiService(RestTemplate restTemplate) {
