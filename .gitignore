@@ -40,3 +40,5 @@ out/
 
 application.properties
 application-API-KEY.properties
+
+src/main/resources/application-API-KEY.properties
