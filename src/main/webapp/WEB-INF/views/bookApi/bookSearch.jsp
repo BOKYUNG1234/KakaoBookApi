@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
    <head>
@@ -96,50 +97,64 @@
     
    </head>
    <body>
-   
-   	<h3>다음 책 검색 API</h3>
-   
-	<form id="submitForm" method="GET" action="/test/search"> 
+
+
+	<h3>다음 책 검색 API</h3>
+
+	<form id="submitForm" method="GET" action="/bookApi/search">
 		<div class="input-group mb-3">
-		  <input type="text" id="keywordInput" name="keyword" class="form-control" placeholder="키워드를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-		  <button class="btn btn-outline-secondary" type="submit" id="button-addon2">도서검색</button>
+			<input type="text" id="keywordInput" name="keyword"
+				class="form-control" placeholder="키워드를 입력하세요"
+				aria-label="Recipient's username" aria-describedby="button-addon2">
+			<button class="btn btn-outline-secondary" type="submit"
+				id="button-addon2">도서검색</button>
 		</div>
 	</form>
+
+
 	<table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">제목</th>
-            <th scope="col">이미지</th>
-          </tr>
-        </thead>
-        <tbody>
-          <c:forEach items="${result.documents}" var="document" varStatus="status">
-            <tr>
-              <th scope="row">${status.index + 1}</th>
-              <td>
-				  <a href="#" class="bookTitle" data-contents="${document.contents}" data-url="${document.url}">${document.title}</a>
-				  <div>저자 : <c:forEach items="${document.authors}" var="author">${author} </c:forEach></div>
-				  <div>출판사 : ${document.publisher}</div>
-				  <div>출판일 : ${document.datetime}</div>
-				  
-			  </td>
-             
-              <td><img src="${document.thumbnail}" alt="${document.title}" class="img-thumbnail" /></td>
-            </tr>
-           <!-- 제목 버튼을 누르면 여기 tr을 하나 더 만들어서 컨텐츠를 표시 -->
-          </c:forEach>
-          
-        </tbody>
-      </table>
-      <div id="topBtn">
-      	<a href="#" style="text-align :center; text-decoration :none;">맨 위로</a>
-      </div>
-     
-   
-   
-   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">제목</th>
+				<th scope="col">이미지</th>
+			</tr>
+		</thead>
+		<tbody>
+
+
+			<c:forEach items="${result.documents}" var="document"
+				varStatus="status">
+				<tr>
+					<th scope="row">${status.index + 1}</th>
+					<td><a href="#" class="bookTitle" data-contents="${document.contents}" data-url="${document.url}">${document.title}</a>
+						<div>
+							저자 :<c:forEach items="${document.authors}" var="author">${author} </c:forEach>
+						</div>
+						<div>출판사 : ${document.publisher}</div>
+						<div>출판일 : ${document.datetime}</div></td>
+
+					<td><img src="${document.thumbnail}" alt="${document.title}" class="img-thumbnail" /></td>
+				</tr>
+				<!-- 제목 버튼을 누르면 여기 tr을 하나 더 만들어서 컨텐츠를 표시 -->
+			</c:forEach>
+
+
+
+		</tbody>
+	</table>
+	<c:if test="${not empty errorMessage}">
+		<div class="alert alert-warning">${errorMessage}</div>
+	</c:if>
+	<div id="topBtn">
+		<a href="#" style="text-align: center; text-decoration: none;">맨
+			위로</a>
+	</div>
+
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
    </body>
     
 </html>

@@ -13,7 +13,7 @@ import com.KakaoBookApi.dto.Response;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequestMapping("/test")
+@RequestMapping("/bookApi")
 @Slf4j
 public class ApiController {
 	//requestMapping을 주니까 되네??!!
@@ -21,28 +21,30 @@ public class ApiController {
 	@Autowired
 	private ApiService apiService;
 	
-	@GetMapping("/main")
+	@GetMapping("/")
 	public String main() {
 		log.info("====================== main 컨트롤러 실행 ======================");
 	
 		
-		return "test/hihi";
+		return "bookApi/bookSearch";
 	}
 	
 	@GetMapping("/search")
-	public String searchBooks(@RequestParam("keyword") String keyword, Model model) {
+	public String searchBooks(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
 		log.info("====================== searchBooks 컨트롤러 실행 ======================");
 		log.info("키워드 : " + keyword);
 		
-		Response result = apiService.searchBooks(keyword);
-		model.addAttribute("result", result);
+		 if (keyword == null || keyword.trim().isEmpty()) {
+		        model.addAttribute("errorMessage", "검색어를 입력하세요.");
+		        // 검색어가 없는 경우 메시지 설정
+		    } else {
+		        Response result = apiService.searchBooks(keyword);
+		        model.addAttribute("result", result);
+		    }
 		
 		
 		
-		
-		
-		
-		return "test/hihi";
+		return "bookApi/bookSearch";
 	}
 	
 	
