@@ -3,7 +3,7 @@
 #### 카카오 도서 검색 API를 활용한 도서 검색 사이트
 
 #### 사용기술
-JAVA 17, SpringBoot3, STS4, Git, Kakao Book API, BootStrap, jQuery
+JAVA 17, SpringBoot3, STS4, Git, Kakao Book API, BootStrap, jQuery   
 JSP, RestTemplate
 
 1. 검색 화면
