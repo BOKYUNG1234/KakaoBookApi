@@ -14,7 +14,7 @@ JSP, RestTemplate
 
 ---
 
-2. 도서 검색   
+2. 도서 검색   
 <img width="730" alt="image" src="https://github.com/mipoung/kakaoBookApi/assets/95519464/4844d47c-07c8-455b-be47-c04ccf061f8d">   <br>
 키워드를 입력해 도서를 검색하면 하단 테이블에 검색 결과를 표시합니다.   
 제목, 저자, 출판사, 출판일, 도서 썸네일 등을 표시합니다.   
@@ -39,6 +39,7 @@ JSP, RestTemplate
 <img width="731" alt="image" src="https://github.com/mipoung/kakaoBookApi/assets/95519464/252430e2-9633-4ee4-8f4b-1f6634399368">   <br>
 앵커태그를 이용해 하단에서 최상단으로 바로 이동할 수 있는 버튼을 제공합니다.
 
+---
 
 5. 반응형 웹으로 디자인
 <img width="397" alt="image" src="https://github.com/mipoung/kakaoBookApi/assets/95519464/57734168-f2d0-4d9f-80a9-373225f66ce8"> <br>
