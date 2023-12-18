@@ -41,7 +41,7 @@ JSP, RestTemplate
 
 ---
 
-5. 반응형 웹으로 디자인
+5. 반응형 웹으로 디자인 <br>
 <img width="397" alt="image" src="https://github.com/mipoung/kakaoBookApi/assets/95519464/57734168-f2d0-4d9f-80a9-373225f66ce8"> <br>
 미디어쿼리를 이용해 반응형 웹으로 디자인되어 모바일에서도 최적의 환경을 제공합니다.   
 
