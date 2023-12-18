@@ -24,6 +24,12 @@
       		padding-bottom : 50px;
       	}
       	
+      	
+      	.moreView{
+      		text-align: right;
+      	}
+      	
+      	
       	@media screen and (max-width: 700px) {
 		  /* 화면 너비가 768px 이하인 경우에만 적용되는 스타일 */
 		  body {
@@ -31,6 +37,7 @@
 		    padding-top : 50px;
       		padding-bottom : 50px;
 		  }
+		  
 		}
       </style>
       
@@ -40,9 +47,18 @@
     	  
     	  	$('.bookTitle').click(function(event) {
     	      event.preventDefault(); // 기본 이벤트를 방지합니다 (링크 클릭시 페이지 이동 방지)
-    	      var contents = $(this).data('contents'); // 클릭된 요소의 data-title 속성 값 가져오기
+    	      $(".newTr").remove();
     	      
-    	      alert(contents);
+    	      var contents = $(this).data('contents'); // 클릭된 요소의 data-contents 속성 값 가져오기
+			   // 현재 클릭된 요소의 부모 tr 찾기
+		      var parentTr = $(this).closest('tr');
+    	      var moreViewLink = $(this).data('url'); 
+    	      
+    	    
+
+    	      var newTr = $('<tr class="newTr"><td colspan="4">' + contents + '...<div class="moreView"><a href="' + moreViewLink + '">...더보기</a></div></td></tr>');
+    	      
+    	      parentTr.after(newTr);
     	      
     	    });
     	  
@@ -76,7 +92,7 @@
             <tr>
               <th scope="row">${status.index + 1}</th>
               <td>
-				  <a href="#" class="bookTitle" data-contents="${document.contents}">${document.title}</a>
+				  <a href="#" class="bookTitle" data-contents="${document.contents}" data-url="${document.url}">${document.title}</a>
 			  </td>
               <td><c:forEach items="${document.authors}" var="author">${author} </c:forEach></td>
              
