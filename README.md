@@ -6,6 +6,7 @@
 JAVA 17, SpringBoot3, STS4, Git, Kakao Book API, BootStrap, jQuery   
 JSP, RestTemplate
 
+---
 1. 검색 화면   
 <img width="726" alt="image" src="https://github.com/mipoung/kakaoBookApi/assets/95519464/68a40f46-f103-46f3-a1f0-95801348dc59">  <br> 
 검색 화면에서 검색하고싶은 도서 키워드를 입력해 도서를 검색할 수 있습니다.   
@@ -33,7 +34,7 @@ JSP, RestTemplate
 
 
 5. 반응형 웹으로 디자인
-<img width="397" alt="image" src="https://github.com/mipoung/kakaoBookApi/assets/95519464/57734168-f2d0-4d9f-80a9-373225f66ce8">
+<img width="397" alt="image" src="https://github.com/mipoung/kakaoBookApi/assets/95519464/57734168-f2d0-4d9f-80a9-373225f66ce8"> <br>
 미디어쿼리를 이용해 반응형 웹으로 디자인되어 모바일에서도 최적의 환경을 제공합니다.   
 
 
