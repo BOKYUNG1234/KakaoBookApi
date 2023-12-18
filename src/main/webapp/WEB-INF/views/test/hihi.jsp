@@ -29,13 +29,28 @@
       		text-align: right;
       	}
       	
+      	#topBtn {
+      		margin: 0 auto;
+ 			width: fit-content;
+ 			
+      	}
+      	
+      	a {
+      		text-decoration : none;
+      	}
+      	
+      	
       	
       	@media screen and (max-width: 700px) {
 		  /* 화면 너비가 768px 이하인 경우에만 적용되는 스타일 */
+		  h3{
+		  	text-align : center;
+		  }
+		  
 		  body {
 		    width : 100%;
-		    padding-top : 50px;
-      		padding-bottom : 50px;
+		    padding-top : 20px;
+      		padding-bottom : 5px;
 		  }
 		  
 		}
@@ -43,6 +58,18 @@
       
       <script>
       $(function(){
+    	  
+    	  $("#button-addon2").click(function() {
+    		    var inputVal = $("#keywordInput").val().trim(); // 입력값에서 공백 제거
+
+    		    if(inputVal == "") {
+    		        alert("검색어를 입력하세요.");
+    		        $("#keywordInput").focus();
+    		        return false;
+    		    }
+    		});
+    		
+    	  	
     	  
     	  
     	  	$('.bookTitle').click(function(event) {
@@ -55,8 +82,8 @@
     	      var moreViewLink = $(this).data('url'); 
     	      
     	    
+    	      var newTr = $('<tr class="newTr"><td colspan="4">' + contents + '...<div class="moreView"><a href="' + moreViewLink + '" target="_blank">...더보기</a></div></td></tr>');
 
-    	      var newTr = $('<tr class="newTr"><td colspan="4">' + contents + '...<div class="moreView"><a href="' + moreViewLink + '">...더보기</a></div></td></tr>');
     	      
     	      parentTr.after(newTr);
     	      
@@ -83,7 +110,6 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">제목</th>
-            <th scope="col">저자</th>
             <th scope="col">이미지</th>
           </tr>
         </thead>
@@ -93,8 +119,11 @@
               <th scope="row">${status.index + 1}</th>
               <td>
 				  <a href="#" class="bookTitle" data-contents="${document.contents}" data-url="${document.url}">${document.title}</a>
+				  <div>저자 : <c:forEach items="${document.authors}" var="author">${author} </c:forEach></div>
+				  <div>출판사 : ${document.publisher}</div>
+				  <div>출판일 : ${document.datetime}</div>
+				  
 			  </td>
-              <td><c:forEach items="${document.authors}" var="author">${author} </c:forEach></td>
              
               <td><img src="${document.thumbnail}" alt="${document.title}" class="img-thumbnail" /></td>
             </tr>
@@ -103,8 +132,9 @@
           
         </tbody>
       </table>
-      
-      
+      <div id="topBtn">
+      	<a href="#" style="text-align :center; text-decoration :none;">맨 위로</a>
+      </div>
      
    
    
