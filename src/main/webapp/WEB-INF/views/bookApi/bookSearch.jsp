@@ -100,7 +100,7 @@
 
 
 	<h3>다음 책 검색 API</h3>
-
+	<p>검색 결과에서 제목을 클릭하면 책에 대한 설명이 표시됩니다.</p>
 	<form id="submitForm" method="GET" action="/bookApi/search">
 		<div class="input-group mb-3">
 			<input type="text" id="keywordInput" name="keyword"
@@ -127,9 +127,9 @@
 				varStatus="status">
 				<tr>
 					<th scope="row">${status.index + 1}</th>
-					<td><a href="#" class="bookTitle" data-contents="${document.contents}" data-url="${document.url}">${document.title}</a>
+					<td><h6><a href="#" class="bookTitle" data-contents="${document.contents}" data-url="${document.url}">${document.title}</a></h6>
 						<div>
-							저자 :<c:forEach items="${document.authors}" var="author">${author} </c:forEach>
+							저자 : <c:forEach items="${document.authors}" var="author">${author} </c:forEach>
 						</div>
 						<div>출판사 : ${document.publisher}</div>
 						<div>출판일 : ${document.datetime}</div></td>
